@@ -3,6 +3,7 @@
   "title": "Damage Progress",
   "version": "1.0.0",
   "manifest": "https://raw.githubusercontent.com/woutermeuwis/damage-progress/refs/heads/main/module.json",
+  "download": "",
   "compatibility": {
     "minimum": "12",
     "verified": "12"
