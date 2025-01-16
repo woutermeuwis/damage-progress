@@ -2,6 +2,7 @@
   "id": "damage-progress",
   "title": "Damage Progress",
   "version": "1.0.0",
+  "manifest": "https://raw.githubusercontent.com/woutermeuwis/damage-progress/refs/heads/main/module.json",
   "compatibility": {
     "minimum": "12",
     "verified": "12"
@@ -14,15 +15,20 @@
       "flags": {}
     }
   ],
-  "esmodules": ["register-hooks.js"],
-  "relationships": [
-    {
-      "id": "colorsettings",
-      "type": "module",
-      "manifest": "https://raw.githubusercontent.com/ardittristan/VTTColorSettings/master/module.json",
-      "compatibility": {
-        "verified": "2.9.0"
+  "esmodules": [
+    "register-hooks.js"
+  ],
+  "relationships": {
+    "requires": [
+      {
+        "id": "colorsettings",
+        "type": "module",
+        "manifest": "https://raw.githubusercontent.com/ardittristan/VTTColorSettings/master/module.json",
+        "compatibility": {
+          "verified": "2.9.0"
+        }
       }
-    }
-  ]
+    ]
+  },
+  "url": "https://github.com/woutermeuwis/damage-progress"
 }
