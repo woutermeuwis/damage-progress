@@ -13,5 +13,16 @@
       "discord": "woudter",
       "flags": {}
     }
+  ],
+  "esmodules": ["register-hooks.js"],
+  "relationships": [
+    {
+      "id": "colorsettings",
+      "type": "module",
+      "manifest": "https://raw.githubusercontent.com/ardittristan/VTTColorSettings/master/module.json",
+      "compatibility": {
+        "verified": "2.9.0"
+      }
+    }
   ]
 }
