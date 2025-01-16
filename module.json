@@ -1,0 +1,17 @@
+{
+  "id": "damage-progress",
+  "title": "Damage Progress",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "12",
+    "verified": "12"
+  },
+  "authors": [
+    {
+      "name": "Wouter Meuwis",
+      "email": "woutermeuwis@gmail.com",
+      "discord": "woudter",
+      "flags": {}
+    }
+  ]
+}
