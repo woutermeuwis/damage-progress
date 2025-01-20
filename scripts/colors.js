@@ -2,6 +2,9 @@ export function getColorFromValues(newHp, maxHp) {
     if (!newHp || !maxHp || isNaN(newHp) || isNaN(maxHp))
         return undefined;
 
+    if(newHp === maxHp)
+        return null;
+
     let percent = newHp / maxHp;
     return getColorFromPercentage(percent);
 }

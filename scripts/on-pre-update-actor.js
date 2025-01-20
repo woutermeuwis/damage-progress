@@ -3,7 +3,7 @@ import {isEmbeddedToken, getLinkedTokensOnCanvas, updateTokenTint} from "./token
 
 export function onPreUpdateActor(actor, updateData) {
     let newColor = getColorFromValues(updateData?.system?.attributes?.hp?.value, actor?.system?.attributes?.hp?.max);
-    if(!newColor)
+    if(newColor === undefined)
         return;
 
     // update for unlinked tokens (Typically NPC's)
