@@ -1,17 +1,23 @@
-export function isEmbeddedToken(obj){
-    return obj?.isEmbedded && obj?.documentName === "Token";
+import {buildContainer, buildLowerLeftPixiCircle} from "./pixi.js";
+
+export function updateTokenIndicator(canvas, token, color)
+{
+    drawTokenSprite(token, color);
+    hideTokenHpBar(canvas, token);
 }
 
-export function getLinkedTokensOnCanvas(canvas, id) {
-    return canvas.tokens.placeables.filter(token => token.document.actorId == id && token.document.actorLink);
+function drawTokenSprite(token, color){
+    const size = token.h / 20;
+    const container = buildContainer(token);
+    const circle = buildLowerLeftPixiCircle(token, color, size)
+    container.addChild(circle);
+    console.log("Update token " + token.id +" with color " + color);
 }
 
-export function updateTokenTint(canvas, id, color){
-    let options = [{
-        "texture.tint": color,
-        _id: id
-    }]
-    canvas.scene.updateEmbeddedDocuments(Token.embeddedName, options);
-
-    console.log("damage-progress | set token " + id + " | Tint: " + color);
+function hideTokenHpBar(canvas, token){
+    let tokenUpdate = {
+        _id: token.id,
+        "displayBars": CONST.TOKEN_DISPLAY_MODES.NONE
+    }
+    canvas.scene.updateEmbeddedDocuments('Token', [tokenUpdate]);
 }

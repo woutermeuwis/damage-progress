@@ -1,12 +1,7 @@
 export function getColorFromValues(newHp, maxHp) {
-    if (!newHp || !maxHp || isNaN(newHp) || isNaN(maxHp))
+    if (!validateHp(newHp) || !validateHp(maxHp))
         return undefined;
-
-    if(newHp === maxHp)
-        return null;
-
-    let percent = newHp / maxHp;
-    return getColorFromPercentage(percent);
+    return getColorFromPercentage(newHp / maxHp);
 }
 
 export function getColorFromPercentage(percent) {
@@ -66,4 +61,8 @@ function toRgb(hex) {
             blue: parseInt(result[3], 16)
         }
         : {red: 255, green: 255, blue: 255};
+}
+
+function validateHp(hp){
+    return hp != null && !isNaN(hp);
 }
