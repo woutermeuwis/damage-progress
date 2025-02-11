@@ -1,4 +1,4 @@
-export function buildContainer(token){
+export function buildContainer(token) {
     const container = new PIXI.Container();
     container.setParent(token);
     container.sortableChildren = true;
@@ -7,20 +7,16 @@ export function buildContainer(token){
     return container;
 }
 
-export function buildUpperLeftPixiCircle(token, color, radius)
-{
-    return buildPixiCircle(color, radius,radius,radius);
-}
-
-export function buildLowerLeftPixiCircle(token, color, radius)
-{
-    return buildPixiCircle(color, radius,token.h-radius, radius);
-}
-
-export function buildPixiCircle(color, x, y, radius){
+export function buildPixiCircle(token, color) {
     let sprite = new PIXI.Graphics();
-    sprite.beginFill(color);
-    sprite.drawCircle(x,y,radius);
-    sprite.endFill();
+    updatePixiCircle(sprite, token, color);
     return sprite;
+}
+
+export function updatePixiCircle(sprite, token, color) {
+    sprite.clear();
+    console.log("line from (0,"+token.h + ") to (" + token.w + "," + token.h + ")");
+    sprite.moveTo(0, token.h);
+    sprite.lineStyle(10, color, 1, 0.5);
+    sprite.lineTo(token.w, token.h);
 }

@@ -1,4 +1,5 @@
-import {buildContainer, buildLowerLeftPixiCircle} from "./pixi.js";
+import {buildContainer, buildPixiCircle, updatePixiCircle} from "./pixi.js";
+import {getTokenHpSprite, setTokenHpSprite} from "./data-store.js";
 
 export function updateTokenIndicator(canvas, token, color)
 {
@@ -7,11 +8,18 @@ export function updateTokenIndicator(canvas, token, color)
 }
 
 function drawTokenSprite(token, color){
-    const size = token.h / 20;
-    const container = buildContainer(token);
-    const circle = buildLowerLeftPixiCircle(token, color, size)
-    container.addChild(circle);
-    console.log("Update token " + token.id +" with color " + color);
+    const radius = token.h / 20;
+
+    let sprite = getTokenHpSprite(token.id);
+    if(sprite === undefined){
+        const container = buildContainer(token);
+        sprite = buildPixiCircle(token, color)
+        container.addChild(sprite);
+        setTokenHpSprite(token.id, sprite);
+    }
+    else{
+        updatePixiCircle(sprite, token, color)
+    }
 }
 
 function hideTokenHpBar(canvas, token){
