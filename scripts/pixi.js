@@ -15,7 +15,6 @@ export function buildPixiCircle(token, color) {
 
 export function updatePixiCircle(sprite, token, color) {
     sprite.clear();
-    console.log("line from (0,"+token.h + ") to (" + token.w + "," + token.h + ")");
     sprite.moveTo(0, token.h);
     sprite.lineStyle(10, color, 1, 0.5);
     sprite.lineTo(token.w, token.h);

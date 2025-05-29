@@ -10,3 +10,7 @@ export function getTokenHpSprite(tokenId) {
 export function setTokenHpSprite(tokenId, container) {
     damageBubbleStore[tokenId] = container;
 }
+
+export function clearHpSprites(){
+    damageBubbleStore = {};
+}
