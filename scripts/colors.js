@@ -1,3 +1,5 @@
+import {getHighHpColor, getLowHpColor, getMidHpColor} from "./settings.js";
+
 export function getColorFromValues(newHp, maxHp) {
     if (!validateHp(newHp) || !validateHp(maxHp))
         return undefined;
@@ -8,26 +10,14 @@ export function getColorFromPercentage(percent) {
     if (isNaN(percent) || percent > 1.0)
         return '#FFFFFF';
 
-    const lowColor = percent > 0.5 ? getMidColor() : getLowColor();
-    const highColor = percent > 0.5 ? getHighColor() : getMidColor();
+    const lowColor = percent > 0.5 ? getMidHpColor() : getLowHpColor();
+    const highColor = percent > 0.5 ? getHighHpColor() : getMidHpColor();
 
     let gradientPercentage = 2 * percent;
     if (gradientPercentage > 1.0)
         gradientPercentage -= 1;
 
     return getGradientColor(lowColor, highColor, gradientPercentage);
-}
-
-function getLowColor() {
-    return game.settings.get("damage-progress", "LowHpColor");
-}
-
-function getMidColor() {
-    return game.settings.get("damage-progress", "MidHpColor");
-}
-
-function getHighColor() {
-    return game.settings.get("damage-progress", "HighHpColor");
 }
 
 function getGradientColor(lowColor, highColor, gradientPercentage) {
