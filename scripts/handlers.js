@@ -1,8 +1,8 @@
 import {MySocketHandler} from "./socket-handler.js";
-const moduleName = "damage-progress";
+import {MODULE_NAME} from "./constants.js";
 
 function getPackage() {
-    return game.modules.get(moduleName);
+    return game.modules.get(MODULE_NAME);
 }
 
 export function registerHandlers() {
